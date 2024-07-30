@@ -1,0 +1,90 @@
+services:
+  jackett:
+    image: linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1000  # Adjust according to your user ID
+      - PGID=1000  # Adjust according to your group ID
+      - TZ=America/Denver  # Adjust according to your timezone
+    volumes:
+      - /srv/docker/jackett/config:/config
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1000  # Adjust according to your user ID
+      - PGID=1000  # Adjust according to your group ID
+      - TZ=America/Denver  # Adjust according to your timezone
+    volumes:
+      - /srv/docker/radarr/config:/config
+      - /mnt/media/Movies:/mnt/movies
+      - /mnt/media/downloads:/mnt/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=1000  # Adjust according to your user ID
+      - PGID=1000  # Adjust according to your group ID
+      - TZ=America/Denver  # Set timezone to Denver
+      - WEBUI_PORT=8080  # Port for qBittorrent Web UI
+    volumes:
+      - /srv/docker/qbittorrent/config:/config
+      - /mnt/media/downloads:/mnt/downloads
+      - /mnt/media/Movies:/mnt/movies
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+
+  sabnzbd:
+    image: linuxserver/sabnzbd
+    container_name: sabnzbd
+    environment:
+      - PUID=1000  # Adjust according to your user ID
+      - PGID=1000  # Adjust according to your group ID
+      - TZ=America/Denver  # Set timezone to Denver
+    volumes:
+      - /srv/docker/sabnzbd/config:/config
+      - /mnt/media/downloads:/mnt/downloads
+      - /mnt/media/Movies:/mnt/movies
+    ports:
+      - 8081:8081
+    restart: unless-stopped
+
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID=1000  # Adjust according to your user ID
+      - PGID=1000  # Adjust according to your group ID
+      - TZ=America/Denver  # Set timezone to Denver
+    volumes:
+      - /srv/docker/sonarr/config:/config
+      - /mnt/media/Shows:/mnt/shows
+      - /mnt/media/downloads:/mnt/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  overseerr:
+    image: sctx/overseerr:latest
+    container_name: overseerr
+    environment:
+      - LOG_LEVEL=info
+      - TZ=America/Denver  # Set timezone to Denver
+      - PUID=1001  # Adjust according to your user ID
+      - PGID=1001  # Adjust according to your group ID
+    volumes:
+      - /srv/docker/overseerr/config:/app/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
