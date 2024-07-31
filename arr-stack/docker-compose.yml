@@ -84,7 +84,7 @@ services:
       - PUID=1001  # Adjust according to your user ID
       - PGID=1001  # Adjust according to your group ID
     volumes:
-      - /srv/docker/overseerr/config:/app/config
+      - overseerr:/app/config
     ports:
       - 5055:5055
     restart: unless-stopped
@@ -95,3 +95,4 @@ volumes:
   qbittorrent:
   sabnzbd:
   sonarr:
+  overseerr:
