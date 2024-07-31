@@ -20,7 +20,7 @@ services:
       - PGID=1000  # Adjust according to your group ID
       - TZ=America/Denver  # Adjust according to your timezone
     volumes:
-      - /srv/docker/radarr/config:/config
+      - radarr:/config
       - /mnt/media/Movies:/mnt/movies
       - /mnt/media/downloads:/mnt/downloads
     ports:
