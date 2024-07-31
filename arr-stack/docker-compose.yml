@@ -36,7 +36,7 @@ services:
       - TZ=America/Denver  # Set timezone to Denver
       - WEBUI_PORT=8080  # Port for qBittorrent Web UI
     volumes:
-      - /srv/docker/qbittorrent/config:/config
+      - qbittorrent:/config
       - /mnt/media/downloads:/mnt/downloads
       - /mnt/media/Movies:/mnt/movies
     ports:
@@ -92,3 +92,4 @@ services:
 volumes:
   jackett:
   radarr:
+  qbittorrent:
