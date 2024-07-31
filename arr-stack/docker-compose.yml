@@ -68,7 +68,7 @@ services:
       - PGID=1000  # Adjust according to your group ID
       - TZ=America/Denver  # Set timezone to Denver
     volumes:
-      - /srv/docker/sonarr/config:/config
+      - sonarr:/config
       - /mnt/media/Shows:/mnt/shows
       - /mnt/media/downloads:/mnt/downloads
     ports:
@@ -94,3 +94,4 @@ volumes:
   radarr:
   qbittorrent:
   sabnzbd:
+  sonarr:
