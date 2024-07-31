@@ -91,3 +91,4 @@ services:
 
 volumes:
   jackett:
+  radarr:
