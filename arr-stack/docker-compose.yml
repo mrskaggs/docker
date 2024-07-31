@@ -53,7 +53,7 @@ services:
       - PGID=1000  # Adjust according to your group ID
       - TZ=America/Denver  # Set timezone to Denver
     volumes:
-      - /srv/docker/sabnzbd/config:/config
+      - sabnzbd:/config
       - /mnt/media/downloads:/mnt/downloads
       - /mnt/media/Movies:/mnt/movies
     ports:
@@ -93,3 +93,4 @@ volumes:
   jackett:
   radarr:
   qbittorrent:
+  sabnzbd:
