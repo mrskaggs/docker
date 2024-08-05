@@ -90,15 +90,15 @@ services:
     restart: unless-stopped
 
 volumes:
-  jackett:
-    arr_external: true
-  radarr:
-    arr_external: true
-  qbittorrent:
-    arr_external: true
-  sabnzbd:
-    arr_external: true
-  sonarr:
-    arr_external: true
+  arr_jackett:
+    external: true
+  arr_radarr:
+    external: true
+  arr_qbittorrent:
+    external: true
+  arr_sabnzbd:
+    external: true
+  arr_sonarr:
+    external: true
   arr_overseerr:
     external: true
