@@ -91,14 +91,8 @@ services:
 
 volumes:
   jackett:
-    external: true
   radarr:
-      external: true
   qbittorrent:
-      external: true
   sabnzbd:
-      external: true
   sonarr:
-      external: true
   overseerr:
-      external: true
