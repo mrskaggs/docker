@@ -68,7 +68,7 @@ services:
       - PGID=1000  # Adjust according to your group ID
       - TZ=America/Denver  # Set timezone to Denver
     volumes:
-      - arr_onarr:/config
+      - arr_sonarr:/config
       - /mnt/media/Shows:/mnt/shows
       - /mnt/media/downloads:/mnt/downloads
     ports:
