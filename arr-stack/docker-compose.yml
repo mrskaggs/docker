@@ -21,8 +21,8 @@ services:
       - TZ=America/Denver  # Adjust according to your timezone
     volumes:
       - arr_radarr:/config
-      - /mnt/media/Movies:/mnt/movies
-      - /mnt/media/downloads:/mnt/downloads
+      - movies:/mnt/movies
+      - downloads:/mnt/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -37,8 +37,8 @@ services:
       - WEBUI_PORT=8080  # Port for qBittorrent Web UI
     volumes:
       - arr_qbittorrent:/config
-      - /mnt/media/downloads:/mnt/downloads
-      - /mnt/media/Movies:/mnt/movies
+      - downloads:/mnt/downloads
+      - movies:/mnt/movies
     ports:
       - 8080:8080
       - 6881:6881
@@ -54,8 +54,8 @@ services:
       - TZ=America/Denver  # Set timezone to Denver
     volumes:
       - arr_sabnzbd:/config
-      - /mnt/media/downloads:/mnt/downloads
-      - /mnt/media/Movies:/mnt/movies
+      - downloads:/mnt/downloads
+      - movies:/mnt/movies
     ports:
       - 8081:8081
     restart: unless-stopped
@@ -69,8 +69,8 @@ services:
       - TZ=America/Denver  # Set timezone to Denver
     volumes:
       - arr_sonarr:/config
-      - /mnt/media/Shows:/mnt/shows
-      - /mnt/media/downloads:/mnt/downloads
+      - shows:/mnt/shows
+      - downloads:/mnt/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -101,4 +101,10 @@ volumes:
   arr_sonarr:
     external: true
   arr_overseerr:
+    external: true
+  downloads:
+    external: true
+  movies:
+    external: true
+  shows:
     external: true
