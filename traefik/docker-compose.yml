@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   traefik:
-    image: traefik:v3.1
+    image: traefik:v3.0
     container_name: traefik
     restart: unless-stopped
     security_opt:
@@ -24,9 +24,8 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - traefik:/traefik/data:ro  # Mount the data folder from the volume to /traefik/data in the container
-      - /traefik/data/traefik.yml:/traefik.yml:ro  # Map traefik.yml from the volume to the expected path
-      - /traefik/data/acme.json:/acme.json  # Map acme.json from the volume to the expected path
+      - ./data/traefik.yml:/traefik.yml:ro
+      - ./data/acme.json:/acme.json
       # - ./data/config.yml:/config.yml:ro
     labels:
       - "traefik.enable=true"
@@ -52,7 +51,3 @@ secrets:
 networks:
   proxy:
     external: true
-
-volumes:
-  traefik:
-    driver: local
