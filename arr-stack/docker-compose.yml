@@ -39,6 +39,8 @@ services:
       - arr_radarr:/config
       - /mnt/media/Movies:/mnt/movies
       - /mnt/media/downloads:/mnt/downloads
+    ports:
+      - 7878:7878
     restart: unless-stopped
 
   qbittorrent:
