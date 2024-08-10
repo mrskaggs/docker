@@ -3,10 +3,10 @@ services:
     image: linuxserver/jackett
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`jackett.local.wwwfake.com`)"
-      - "traefik.http.routers.nginx.entrypoints=https"
-      - "traefik.http.routers.nginx.tls=true"
-      - "traefik.http.services.nginx.loadbalancer.server.port=9117"
+      - "traefik.http.routers.jackett.rule=Host(`jackett.local.wwwfake.com`)"
+      - "traefik.http.routers.jackett.entrypoints=https"
+      - "traefik.http.routers.jackett.tls=true"
+      - "traefik.http.services.jackett.loadbalancer.server.port=9117"
     networks:
       - proxy
     container_name: jackett
@@ -25,10 +25,10 @@ services:
     container_name: radarr
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`radarr.local.wwwfake.com`)"
-      - "traefik.http.routers.nginx.entrypoints=https"
-      - "traefik.http.routers.nginx.tls=true"
-      - "traefik.http.services.nginx.loadbalancer.server.port=7878"
+      - "traefik.http.routers.radarr.rule=Host(`radarr.local.wwwfake.com`)"
+      - "traefik.http.routers.radarr.entrypoints=https"
+      - "traefik.http.routers.radarr.tls=true"
+      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
     networks:
       - proxy
     environment:
@@ -46,10 +46,10 @@ services:
     container_name: qbittorrent
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`qbittorrent.local.wwwfake.com`)"
-      - "traefik.http.routers.nginx.entrypoints=https"
-      - "traefik.http.routers.nginx.tls=true"
-      - "traefik.http.services.nginx.loadbalancer.server.port=8080"
+      - "traefik.http.routers.qbittorrent.rule=Host(`qbittorrent.local.wwwfake.com`)"
+      - "traefik.http.routers.qbittorrent.entrypoints=https"
+      - "traefik.http.routers.qbittorrent.tls=true"
+      - "traefik.http.services.qbittorrent.loadbalancer.server.port=8080"
     networks:
       - proxy
     environment:
@@ -72,10 +72,10 @@ services:
     container_name: sabnzbd
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`sabnzbd.local.wwwfake.com`)"
-      - "traefik.http.routers.nginx.entrypoints=https"
-      - "traefik.http.routers.nginx.tls=true"
-      - "traefik.http.services.nginx.loadbalancer.server.port=8081"
+      - "traefik.http.routers.sabnzbd.rule=Host(`sabnzbd.local.wwwfake.com`)"
+      - "traefik.http.routers.sabnzbd.entrypoints=https"
+      - "traefik.http.routers.sabnzbd.tls=true"
+      - "traefik.http.services.sabnzbd.loadbalancer.server.port=8081"
     networks:
       - proxy
     environment:
@@ -95,10 +95,10 @@ services:
     container_name: sonarr
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`sonarr.local.wwwfake.com`)"
-      - "traefik.http.routers.nginx.entrypoints=https"
-      - "traefik.http.routers.nginx.tls=true"
-      - "traefik.http.services.nginx.loadbalancer.server.port=8989"
+      - "traefik.http.routers.sonarr.rule=Host(`sonarr.local.wwwfake.com`)"
+      - "traefik.http.routers.sonarr.entrypoints=https"
+      - "traefik.http.routers.sonarr.tls=true"
+      - "traefik.http.services.sonarr.loadbalancer.server.port=8989"
     networks:
       - proxy
     environment:
@@ -118,10 +118,10 @@ services:
     container_name: overseerr
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`overseerr.local.wwwfake.com`)"
-      - "traefik.http.routers.nginx.entrypoints=https"
-      - "traefik.http.routers.nginx.tls=true"
-      - "traefik.http.services.nginx.loadbalancer.server.port=5055"
+      - "traefik.http.routers.overseerr.rule=Host(`overseerr.local.wwwfake.com`)"
+      - "traefik.http.routers.overseerr.entrypoints=https"
+      - "traefik.http.routers.overseerr.tls=true"
+      - "traefik.http.services.overseerr.loadbalancer.server.port=5055"
     networks:
       - proxy
     environment:
