@@ -1,6 +1,14 @@
 services:
   jackett:
     image: linuxserver/jackett
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`jackett.local.wwwfake.com`)"
+      - "traefik.http.routers.nginx.entrypoints=https"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.services.nginx.loadbalancer.server.port=9117"
+    networks:
+      - proxy
     container_name: jackett
     environment:
       - PUID=1000  # Adjust according to your user ID
@@ -15,6 +23,14 @@ services:
   radarr:
     image: linuxserver/radarr
     container_name: radarr
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`radarr.local.wwwfake.com`)"
+      - "traefik.http.routers.nginx.entrypoints=https"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.services.nginx.loadbalancer.server.port=7878"
+    networks:
+      - proxy
     environment:
       - PUID=1000  # Adjust according to your user ID
       - PGID=1000  # Adjust according to your group ID
@@ -30,6 +46,14 @@ services:
   qbittorrent:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`qbittorrent.local.wwwfake.com`)"
+      - "traefik.http.routers.nginx.entrypoints=https"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.services.nginx.loadbalancer.server.port=8080"
+    networks:
+      - proxy
     environment:
       - PUID=1000  # Adjust according to your user ID
       - PGID=1000  # Adjust according to your group ID
@@ -48,6 +72,14 @@ services:
   sabnzbd:
     image: linuxserver/sabnzbd
     container_name: sabnzbd
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`sabnzbd.local.wwwfake.com`)"
+      - "traefik.http.routers.nginx.entrypoints=https"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.services.nginx.loadbalancer.server.port=8081"
+    networks:
+      - proxy
     environment:
       - PUID=1000  # Adjust according to your user ID
       - PGID=1000  # Adjust according to your group ID
@@ -63,6 +95,14 @@ services:
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`sonarr.local.wwwfake.com`)"
+      - "traefik.http.routers.nginx.entrypoints=https"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.services.nginx.loadbalancer.server.port=8989"
+    networks:
+      - proxy
     environment:
       - PUID=1000  # Adjust according to your user ID
       - PGID=1000  # Adjust according to your group ID
@@ -78,6 +118,14 @@ services:
   overseerr:
     image: sctx/overseerr:latest
     container_name: overseerr
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`overseerr.local.wwwfake.com`)"
+      - "traefik.http.routers.nginx.entrypoints=https"
+      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.services.nginx.loadbalancer.server.port=5055"
+    networks:
+      - proxy
     environment:
       - LOG_LEVEL=info
       - TZ=America/Denver  # Set timezone to Denver
@@ -101,4 +149,8 @@ volumes:
   arr_sonarr:
     external: true
   arr_overseerr:
+    external: true
+
+networks:
+  proxy:
     external: true
