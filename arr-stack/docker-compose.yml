@@ -71,6 +71,10 @@ services:
 
   sabnzbd:
     image: linuxserver/sabnzbd
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'  # Limit to 2 CPU
     container_name: sabnzbd
     labels:
       - "traefik.enable=true"
