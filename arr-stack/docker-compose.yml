@@ -24,11 +24,22 @@ services:
     image: linuxserver/radarr
     container_name: radarr
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.radarr.rule=Host(`radarr.local.wwwfake.com`)"
-      - "traefik.http.routers.radarr.entrypoints=https"
-      - "traefik.http.routers.radarr.tls=true"
-      - "traefik.http.services.radarr.loadbalancer.server.port=7878"
+     # - "traefik.enable=true"
+     # - "traefik.http.routers.radarr.rule=Host(`radarr.local.wwwfake.com`)"
+     # - "traefik.http.routers.radarr.entrypoints=https"
+     # - "traefik.http.routers.radarr.tls=true"
+     # - "traefik.http.services.radarr.loadbalancer.server.port=7878"
+     # HTTP Routers Auth
+      - "traefik.http.routers.radarr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.radarr-rtr.rule=Host(`radarr.local.wwwfake.com`)"
+      - "traefik.http.routers.radarr-rtr.priority=99"
+      # Middlewares
+      - "traefik.http.routers.radarr-rtr-bypass.middlewares=chain-no-auth@file"
+      - "traefik.http.routers.radarr-rtr.middlewares=chain-oauth@file"
+      # HTTP Services
+      - "traefik.http.routers.radarr-rtr.service=radarr-svc"
+      - "traefik.http.routers.radarr-rtr-bypass.service=radarr-svc"
+      - "traefik.http.services.radarr-svc.loadbalancer.server.port=7878"
     networks:
       - proxy
     environment:
