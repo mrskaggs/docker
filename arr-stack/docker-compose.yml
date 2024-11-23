@@ -1,6 +1,6 @@
 services:
   jackett:
-    image: linuxserver/jackett
+    image: linuxserver/jackett:latest
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jackett.rule=Host(`jackett.local.wwwfake.com`)"
@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: linuxserver/radarr
+    image: linuxserver/radarr:latest
     container_name: radarr
     labels:
       - "traefik.enable=true"
@@ -44,7 +44,7 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: linuxserver/qbittorrent
+    image: linuxserver/qbittorrent:latest
     container_name: qbittorrent
     labels:
       - "traefik.enable=true"
@@ -70,7 +70,7 @@ services:
     restart: unless-stopped
 
   sabnzbd:
-    image: linuxserver/sabnzbd
+    image: linuxserver/sabnzbd:latest
     deploy:
       resources:
         limits:
@@ -97,7 +97,7 @@ services:
     restart: unless-stopped
 
   sonarr:
-    image: linuxserver/sonarr
+    image: linuxserver/sonarr:latest
     container_name: sonarr
     labels:
       - "traefik.enable=true"
