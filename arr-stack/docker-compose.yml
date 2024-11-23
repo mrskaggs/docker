@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: linuxserver/radarr:latest
+    image: lscr.io/linuxserver/radarr:latest
     container_name: radarr
     labels:
       - "traefik.enable=true"
