@@ -136,7 +136,7 @@ services:
       - PUID=1001  # Adjust according to your user ID
       - PGID=1001  # Adjust according to your group ID
     volumes:
-      - arr_overseerr:/app/config
+      - arr_overseerr:/config
     ports:
       - 5055:5055
     restart: unless-stopped
